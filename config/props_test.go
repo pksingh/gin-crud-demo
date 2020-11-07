@@ -44,18 +44,6 @@ func TestGetProps(t *testing.T) {
 		},
 
 		{
-			name: "load props from app.properties file and make sure app-preprod overriding works",
-			args: args{
-				resourceDir:  "./testData",
-				shouldSetEnv: true,
-				setEnvTo:     "preprod",
-				defPropVal:   "",
-				searchKey:    "sample.prop2",
-			},
-			expValue: "value2",
-		},
-
-		{
 			name: "load props from app.properties file and make sure app-prod overriding works",
 			args: args{
 				resourceDir:  "./testData",
@@ -94,7 +82,7 @@ func TestGetProps(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.args.shouldSetEnv {
-				t.Setenv(envDetectorKey, tt.args.setEnvTo)
+				t.Setenv(envKey, tt.args.setEnvTo)
 			}
 			p := GetProps(tt.args.resourceDir)
 			got := p.GetString(tt.args.searchKey, tt.args.defPropVal)
@@ -107,7 +95,7 @@ func TestGetProps(t *testing.T) {
 }
 
 func TestGetPropsArr(t *testing.T) {
-	t.Setenv(envDetectorKey, "dev")
+	t.Setenv(envKey, "dev")
 	p := GetProps("./testData")
 	arrKey := "sample.prop3"
 	expValue := "item1,item2, item3, item4 ,   item5"
@@ -118,7 +106,7 @@ func TestGetPropsArr(t *testing.T) {
 }
 
 func TestGetPropsDur(t *testing.T) {
-	t.Setenv(envDetectorKey, "preprod")
+	t.Setenv(envKey, "test")
 	p := GetProps("./testData")
 	key := "http.timeout.sample"
 	expValue := 15 * time.Second
@@ -140,7 +128,7 @@ func TestGetPropsBool(t *testing.T) {
 }
 
 func TestGetSecretFromEnv(t *testing.T) {
-	t.Setenv(envDetectorKey, "preprod")
+	t.Setenv(envKey, "test")
 	expected := "some-random-password"
 
 	// In real world scenarios, Kube does this behind the scenes when we configure it in Rancher

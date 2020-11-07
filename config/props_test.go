@@ -106,7 +106,7 @@ func TestGetPropsArr(t *testing.T) {
 }
 
 func TestGetPropsDur(t *testing.T) {
-	t.Setenv(envKey, "preprod")
+	t.Setenv(envKey, "test")
 	p := GetProps("./testData")
 	key := "http.timeout.sample"
 	expValue := 15 * time.Second
@@ -128,7 +128,7 @@ func TestGetPropsBool(t *testing.T) {
 }
 
 func TestGetSecretFromEnv(t *testing.T) {
-	t.Setenv(envKey, "preprod")
+	t.Setenv(envKey, "test")
 	expected := "some-random-password"
 
 	// In real world scenarios, Kube does this behind the scenes when we configure it in Rancher

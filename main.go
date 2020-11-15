@@ -7,6 +7,7 @@ import (
 
 	"github.com/pksingh/gin-curd-demo/log"
 	"github.com/pksingh/gin-curd-demo/startup/appProps"
+	"github.com/pksingh/gin-curd-demo/startup/middlewares/basicAuth"
 	"github.com/pksingh/gin-curd-demo/startup/server"
 )
 
@@ -24,6 +25,9 @@ func main() {
 
 	// load log config
 	handleStartUpErr(startupLogger, log.Load(ctx))
+
+	// load basic auth creds
+	handleStartUpErr(startupLogger, basicAuth.Load(ctx))
 
 	// load server with all properties into server.ServeConf
 	handleStartUpErr(startupLogger, server.Load(ctx))

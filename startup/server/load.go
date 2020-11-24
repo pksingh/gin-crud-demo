@@ -12,6 +12,7 @@ import (
 	"github.com/pksingh/gin-curd-demo/config/logperreq"
 	"github.com/pksingh/gin-curd-demo/log"
 	"github.com/pksingh/gin-curd-demo/startup/appProps"
+	"github.com/pksingh/gin-curd-demo/startup/middlewares/basicAuth"
 )
 
 var (
@@ -32,6 +33,8 @@ type ServeConf struct {
 	InterestedEndpoint  gin.HandlerFunc
 	AttachRequestID     gin.HandlerFunc
 	AttachRequestLogger gin.HandlerFunc
+
+	Auth basicAuth.Auth
 }
 
 // Load enables us enable/disable specific endpoints from app configurations
@@ -55,6 +58,8 @@ func loadImpls(_ context.Context) error {
 			InterestedEndpoint:  logperreq.InterestedEndpoints(),
 			AttachRequestLogger: logperreq.AttachRequestLogger(logger),
 			AttachRequestID:     logperreq.AttachRequestID(randStr),
+
+			Auth: basicAuth.GetBasicAuthImpl(),
 		}
 	}
 	return nil

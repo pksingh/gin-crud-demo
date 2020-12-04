@@ -3,10 +3,12 @@ package db
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"
 	"github.com/pksingh/gin-curd-demo/log"
+	"github.com/pksingh/gin-curd-demo/startup/appProps"
 	"go.uber.org/zap"
 )
 
@@ -24,14 +26,14 @@ var Postgres PgxIface
 // InitDB - initializes the global var Postgres
 func InitDB(ctx context.Context) error {
 	logger := log.GetLogger(ctx)
-	// props := appProps.GetAll()
+	props := appProps.GetAll()
 
-	host := "localhost"
-	dbname := "test"
-	port := "5432"
-	user := "user"
-	pwd := "password"
-	sslmode := "disabled"
+	host := props.GetString("postgresql.host", "")
+	dbname := props.GetString("postgresql.dbname", "")
+	port := strconv.Itoa(props.GetInt("postgresql.port", 0))
+	user := props.GetString("postgresql.user", "")
+	pwd := props.GetString("postgresql.pwd", "")
+	sslmode := props.GetString("postgresql.sslmode", "")
 
 	logger.Info("connection string:", zap.String("host", host), zap.String("port", port),
 		zap.String("user", user), zap.String("dbname", dbname), zap.String("sslmode", sslmode))

@@ -12,6 +12,7 @@ import (
 
 	"github.com/pksingh/gin-curd-demo/log"
 	"github.com/pksingh/gin-curd-demo/startup/appProps"
+	"github.com/pksingh/gin-curd-demo/startup/db"
 	"github.com/pksingh/gin-curd-demo/startup/middlewares/basicAuth"
 	"github.com/pksingh/gin-curd-demo/startup/server"
 )
@@ -22,6 +23,7 @@ func TestMain(m *testing.M) {
 	_ = os.Setenv("runEnv", "test")
 	_ = appProps.Load("./resources")
 	_ = log.Load(ctx)
+	_ = db.Load(ctx)
 	_ = basicAuth.Load(ctx)
 	_ = server.Load(ctx)
 	gin.SetMode(gin.TestMode)

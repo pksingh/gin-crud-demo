@@ -6,7 +6,8 @@ Sample Demo based on GIN framework.
 
 # Running Outputs
 
-======================================================
+---
+
 REQUEST:
 http://localhost:8080
 
@@ -31,7 +32,8 @@ http://localhost:8080/health
 RESPONSE:
 {"status":"ok"}
 
-------------------------
+---
+
 C:\Users\Home\Desktop\gin-curd-demo_1>go build .
 
 C:\Users\Home\Desktop\gin-curd-demo_1>set runEnv=dev
@@ -59,9 +61,8 @@ C:\Users\Home\Desktop\gin-curd-demo_1>gin-curd-demo.exe
 [GIN] 2020/11/01 - 18:31:28 | 200 |       154.8µs |             ::1 | GET      "/info"
 [GIN] 2020/11/01 - 18:32:56 | 404 |            0s |             ::1 | GET      "/"
 [GIN] 2020/11/01 - 18:33:41 | 200 |       604.7µs |             ::1 | GET      "/health"
-======================================================
-Test case Added
--------------------------------------
+---
+## Test case Added
 
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-curd-demo
 
@@ -80,7 +81,8 @@ ok      github.com/pksingh/gin-curd-demo        (cached)
 
 > Test run finished at 11/4/2020, 9:13:29 PM <
 
--------------------------------------
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestMiddlewaresInjections$ github.com/pksingh/gin-curd-demo/config/logperreq
 
 === RUN   TestMiddlewaresInjections
@@ -145,9 +147,13 @@ ok      github.com/pksingh/gin-curd-demo/config/jlog    0.742s
 
 
 > Test run finished at 11/3/2020, 9:09:16 PM <
-=========================================================
+
+---
+
 http.timeout.sample=1500
---------------------------------------------------------
+
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestGetInfo|TestGetHealth)$ github.com/pksingh/gin-curd-demo/handler
 
 === RUN   TestGetHealth
@@ -164,7 +170,8 @@ ok      github.com/pksingh/gin-curd-demo/handler        0.219s
 
 > Test run finished at 11/10/2020, 10:53:10 PM <
 
-=========================================================
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestBasicAuthConfNotLoaded|TestBasicAuthApply)$ github.com/pksingh/gin-curd-demo/startup/middlewares/basicAuth
 
 === RUN   TestBasicAuthConfNotLoaded
@@ -203,7 +210,8 @@ FAIL    github.com/pksingh/gin-curd-demo/startup/middlewares/basicAuth  0.267s
 
 > Test run finished at 11/28/2020, 11:35:34 PM <
 
-=========================================================
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetAll$ github.com/pksingh/gin-curd-demo/startup/appProps
 
 === RUN   TestGetAll
@@ -219,7 +227,9 @@ ok      github.com/pksingh/gin-curd-demo/startup/appProps       0.343s
 
 
 > Test run finished at 11/28/2020, 11:38:14 PM <
-=========================================================
+
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestCreateServer|TestCreateServerInit|Test_randSeq|Test_generateRandomBytes)$ github.com/pksingh/gin-curd-demo/startup/server
 
 === RUN   TestCreateServerInit
@@ -235,7 +245,9 @@ ok      github.com/pksingh/gin-curd-demo/startup/server 0.346s
 
 
 > Test run finished at 11/30/2020, 11:47:44 PM <
-=========================================================
+
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestDB|TestDBError)$ github.com/pksingh/gin-curd-demo/startup/db
 
 === RUN   TestDB
@@ -258,7 +270,7 @@ ok      github.com/pksingh/gin-curd-demo/startup/db     0.306s
 
 > Test run finished at 12/6/2020, 12:15:42 AM <
 
-=========================================================
+---
 
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestVerifyLogConfHappy|TestBadLogConf|TestGetLoggerWithNilCtxt|TestGetLoggerWithCustomTypeCtxt|TestGetLoggerWithStringCtxt|TestGetLoggerWithNotFoundInCtxt|TestGetRequestIdNotFoundInCtxt)$ github.com/pksingh/gin-curd-demo/log
 
@@ -284,7 +296,9 @@ ok      github.com/pksingh/gin-curd-demo/log    0.229s
 
 
 > Test run finished at 12/6/2020, 12:16:48 AM <
-=========================================================
+
+---
+
 Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-curd-demo
 
 warn    logger not found in context. defaulting to zap-prod configuration.
@@ -306,6 +320,5 @@ ok      github.com/pksingh/gin-curd-demo        0.352s
 
 
 > Test run finished at 12/8/2020, 12:23:33 AM <
-=========================================================
 
-
+---

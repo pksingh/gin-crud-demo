@@ -26,8 +26,10 @@ func (s ServeConf) CreateServer(c context.Context) *gin.Engine {
 	// TODO - change "/myapp"
 	myAppRtr := versionRtr.Group("/myapp")
 
-	// any endpoint under /my-app needs basic auth
+	// any endpoint under /myapp needs basic auth
 	myAppRtr = s.Auth.Apply(c, myAppRtr)
+	// authtest endpoint added
+	myAppRtr.GET("/authtest", handler.GetHealth)
 
 	s.addBusinessEndpointsMiddlewares(myAppRtr)
 

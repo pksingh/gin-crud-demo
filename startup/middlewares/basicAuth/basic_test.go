@@ -20,7 +20,7 @@ func TestBasicAuthConfNotLoaded(t *testing.T) {
 
 func TestBasicAuthApply(t *testing.T) {
 	ctx := context.TODO()
-	t.Setenv("runEnv", "dev")
+	t.Setenv("runEnv", "prod")
 	_ = appProps.Load("../../../resources")
 	_ = log.Load(ctx)
 	gin.SetMode(gin.TestMode)

@@ -31,6 +31,9 @@ func (s ServeConf) CreateServer(c context.Context) *gin.Engine {
 	// authtest endpoint added
 	myAppRtr.GET("/authtest", handler.GetHealth)
 
+	// Addded New Endpoints
+	myAppRtr.GET("/users", handler.ListUsers)
+
 	s.addBusinessEndpointsMiddlewares(myAppRtr)
 
 	return router

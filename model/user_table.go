@@ -138,3 +138,28 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 
 	return uinfo, nil
 }
+
+func InsertSingleUser(c *gin.Context) error {
+	var uinfo UserInfo
+	conn := db.Postgres
+
+	if err := c.ShouldBindJSON(&uinfo); err != nil {
+		log.Printf("\n InPut Details: ERROR - shouldbindjson() : %v\n\n", err.Error())
+		return err
+	}
+
+	log.Printf("\n InPut Details: %+v \n\n", uinfo)
+
+	_, err := conn.Exec(context.Background(),
+		"INSERT INTO user_info (\"u_user_id\", \"u_account_id\", \"u_contact_id\", \"u_loyalty_id\", \"u_is_active_id\", \"u_reference_id\", \"u_user_type\", \"u_account_type\", \"u_loyalty_type\", \"u_member_type\", \"u_brand_type\", \"u_create_rcd_at\", \"u_create_rcd_by_who\", \"u_create_rcd_by_app\", \"u_update_rcd_at\", \"u_update_rcd_by_who\", \"u_update_rcd_by_app\", \"u_data_source\") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)",
+		uinfo.User_id, uinfo.Account_id, uinfo.Contact_id, uinfo.Loyalty_id, uinfo.IsActive_id, uinfo.Reference_id, uinfo.User_type, uinfo.Account_type, uinfo.Loyalty_type, uinfo.Member_type, uinfo.Brand_type, uinfo.Create_rcd_at, uinfo.Create_rcd_by_who, uinfo.Create_rcd_by_app, uinfo.Update_rcd_at, uinfo.Update_rcd_by_who, uinfo.Update_rcd_by_app, uinfo.Data_source)
+
+	if err != nil {
+		log.Println("error while executing query: ", err.Error())
+		return errors.New("error while executing INSERT query")
+	}
+
+	log.Printf("\n INSERT SUCCESS \n\n")
+
+	return nil
+}

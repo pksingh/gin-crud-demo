@@ -163,3 +163,46 @@ func InsertSingleUser(c *gin.Context) error {
 
 	return nil
 }
+
+func UpdateSingleUser(c *gin.Context) error {
+	eval, err := GetSingleUser(c)
+	if err != nil {
+		return err
+	}
+	if eval == nil {
+		return errors.New("record NOT Found")
+	}
+
+	var uinfo UserInfo
+	conn := db.Postgres
+
+	if err := c.BindJSON(&uinfo); err != nil {
+		log.Printf("\n InPut Details: ERROR - bindjson() : %v\n\n", err.Error())
+		return err
+	}
+
+	log.Printf("\n InPut Details: %+v \n\n", uinfo)
+
+	user_id := c.Query("user_id")
+	// account_id := c.Query("account_id")
+	// contact_id := c.Query("contact_id")
+	// loyalty_id := c.Query("loyalty_id")
+
+	// fmt.Printf("user_id: %s; account_id: %s; contact_id: %s; loyalty_id: %s \n", user_id, account_id, contact_id, loyalty_id)
+	fmt.Printf("user_id: %s\n", user_id)
+	if user_id == "" {
+		return errors.New("all mandatory values NOT Passed")
+	}
+
+	_, err = conn.Exec(context.Background(),
+		"UPDATE user_info SET \"u_user_id\"=$1, \"u_account_id\"=$2, \"u_contact_id\"=$3, \"u_loyalty_id\"=$4, \"u_is_active_id\"=$5, \"u_reference_id\"=$6, \"u_user_type\"=$7, \"u_account_type\"=$8, \"u_loyalty_type\"=$9, \"u_member_type\"=$10, \"u_brand_type\"=$11, \"u_create_rcd_at\"=$12, \"u_create_rcd_by_who\"=$13, \"u_create_rcd_by_app\"=$14, \"u_update_rcd_at\"=$15, \"u_update_rcd_by_who\"=$16, \"u_update_rcd_by_app\"=$17, \"u_data_source\"=$18 WHERE u_user_id=$19",
+		uinfo.User_id, uinfo.Account_id, uinfo.Contact_id, uinfo.Loyalty_id, uinfo.IsActive_id, uinfo.Reference_id, uinfo.User_type, uinfo.Account_type, uinfo.Loyalty_type, uinfo.Member_type, uinfo.Brand_type, uinfo.Create_rcd_at, uinfo.Create_rcd_by_who, uinfo.Create_rcd_by_app, uinfo.Update_rcd_at, uinfo.Update_rcd_by_who, uinfo.Update_rcd_by_app, uinfo.Data_source, user_id)
+	if err != nil {
+		log.Println("error while executing query: ", err.Error())
+		return errors.New("error while executing UPDATE query")
+	}
+
+	log.Printf("\n UPDATE SUCCESS \n\n")
+
+	return nil
+}

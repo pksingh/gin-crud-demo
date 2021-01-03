@@ -35,6 +35,7 @@ func (s ServeConf) CreateServer(c context.Context) *gin.Engine {
 	myAppRtr.GET("/users", handler.ListUsers)
 	myAppRtr.GET("/user", handler.GetUser)
 	myAppRtr.POST("/user", handler.InsertUser)
+	myAppRtr.PUT("/user", handler.UpdateUser)
 
 	s.addBusinessEndpointsMiddlewares(myAppRtr)
 

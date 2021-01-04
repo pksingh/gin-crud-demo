@@ -206,3 +206,27 @@ func UpdateSingleUser(c *gin.Context) error {
 
 	return nil
 }
+
+func DeleteSingleUser(c *gin.Context) error {
+	conn := db.Postgres
+
+	user_id := c.Query("user_id")
+	// account_id := c.Query("account_id")
+	// contact_id := c.Query("contact_id")
+	// loyalty_id := c.Query("loyalty_id")
+
+	// fmt.Printf("user_id: %s; account_id: %s; contact_id: %s; loyalty_id: %s \n", user_id, account_id, contact_id, loyalty_id)
+	fmt.Printf("user_id: %s\n", user_id)
+
+	if user_id == "" {
+		return errors.New("all mandatory values NOT Passed")
+	}
+
+	_, err := conn.Exec(context.Background(), "DELETE FROM user_info WHERE u_user_id=$1", user_id)
+	if err != nil {
+		log.Println("error while executing query: ", err.Error())
+		return errors.New("error while executing DELETE query")
+	}
+
+	return err
+}

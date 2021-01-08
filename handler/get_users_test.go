@@ -68,3 +68,28 @@ func TestListUsersNoRecordFound(t *testing.T) {
 	assert.Contains(t, str, "record NOT Found")
 	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
+
+func TestListUsersBadRequest(t *testing.T) {
+	ctx := context.TODO()
+	_ = os.Setenv("runEnv", "dev")
+	_ = os.Setenv("DATABASE_NAME", "nil")
+	_ = appProps.Load("./../resources")
+	_ = log.Load(ctx)
+	_ = db.Load(ctx)
+	router := gin.New()
+	gin.SetMode(gin.TestMode)
+	router.GET("/users", ListUsers)
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/users", nil)
+	router.ServeHTTP(w, req)
+	glog.Println("resp: ", w)
+	assert.NotEmpty(t, w)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
+	assert.NotEmpty(t, w.Body)
+
+	str := w.Body.String()
+	assert.Contains(t, str, "error")
+	assert.Contains(t, str, "ERROR")
+	assert.Contains(t, str, "SQLSTATE")
+	// assert.JSONEq(t,appInfo.String(), w.Body.String())
+}

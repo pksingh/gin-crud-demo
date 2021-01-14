@@ -84,7 +84,7 @@ func TestGetUserNoRecordFound(t *testing.T) {
 	router.ServeHTTP(w, req)
 	glog.Println("resp: ", w)
 	assert.NotEmpty(t, w)
-	assert.Equal(t, http.StatusOK, w.Code)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
 	assert.NotEmpty(t, w.Body)
 
 	str := w.Body.String()

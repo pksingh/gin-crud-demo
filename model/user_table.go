@@ -101,15 +101,18 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 
 	rows, err := conn.Query(context.Background(), "SELECT * FROM user_info WHERE u_user_id=$1 LIMIT 1", user_id)
 	if err != nil {
-		log.Fatal("error while executing query")
+		// log.Fatal("error while executing query")
 		return nil, err
 	}
 
+	count := 0
 	// iterate through the rows
 	for rows.Next() {
+		count++
 		values, err := rows.Values()
 		if err != nil {
-			log.Fatal("error while iterating dataset")
+			// log.Fatal("error while iterating dataset")
+			return nil, err
 		}
 
 		// convert DB types to Go types
@@ -136,7 +139,12 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 		log.Println("[User_id:", uinfo.User_id, "]")
 	}
 
-	return uinfo, nil
+	// return uinfo, nil
+	if count > 0 {
+		return uinfo, nil
+	} else {
+		return nil, errors.New("record NOT Found")
+	}
 }
 
 func InsertSingleUser(c *gin.Context) error {

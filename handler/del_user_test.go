@@ -64,3 +64,27 @@ func TestDeleteUserInvalidRequest(t *testing.T) {
 	assert.Contains(t, str, "all mandatory values NOT Passed")
 	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
+
+func TestDeleteUserNoRecordFound(t *testing.T) {
+	ctx := context.TODO()
+	_ = os.Setenv("runEnv", "dev")
+	// _ = os.Setenv("DATABASE_NAME", "norec")
+	_ = appProps.Load("./../resources")
+	_ = log.Load(ctx)
+	_ = db.Load(ctx)
+	router := gin.New()
+	gin.SetMode(gin.TestMode)
+	router.GET("/user", DeleteUser)
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/user?user_id=12345", nil)
+	router.ServeHTTP(w, req)
+	glog.Println("resp: ", w)
+	assert.NotEmpty(t, w)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
+	assert.NotEmpty(t, w.Body)
+
+	str := w.Body.String()
+	assert.Contains(t, str, "error")
+	assert.Contains(t, str, "record NOT Found")
+	// assert.JSONEq(t,appInfo.String(), w.Body.String())
+}

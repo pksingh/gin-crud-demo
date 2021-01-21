@@ -9,8 +9,8 @@ import (
 
 func DeleteUser(c *gin.Context) {
 	if err := model.DeleteSingleUser(c); err != nil {
-		c.JSON(http.StatusBadRequest, err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
-		c.JSON(http.StatusOK, gin.H{"error": "DELETE record SUCCESS"})
+		c.JSON(http.StatusOK, gin.H{"message": "DELETE record SUCCESS"})
 	}
 }

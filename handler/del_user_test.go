@@ -109,7 +109,7 @@ func TestDeleteUserBadRequest(t *testing.T) {
 
 	str := w.Body.String()
 	assert.Contains(t, str, "error")
-	assert.Contains(t, str, "ERROR")
-	assert.Contains(t, str, "SQLSTATE")
+	assert.Contains(t, str, "executing")
+	assert.Contains(t, str, "DELETE")
 	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }

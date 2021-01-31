@@ -48,3 +48,32 @@ func TestUpdateUserBadRequest(t *testing.T) {
 	assert.Contains(t, str, "SQLSTATE")
 	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
+
+func TestUpdateUser(t *testing.T) {
+	ctx := context.TODO()
+	_ = os.Setenv("runEnv", "dev")
+	_ = appProps.Load("./../resources")
+	_ = log.Load(ctx)
+	_ = db.Load(ctx)
+	router := gin.New()
+	gin.SetMode(gin.TestMode)
+	router.PUT("/user", UpdateUser)
+	w := httptest.NewRecorder()
+	// body := "{\"u_user_id\":5,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
+	body := "{\"u_user_id\":5,\"u_account_id\":500,\"u_contact_id\":52,\"u_loyalty_id\":53,\"u_is_active_id\":true,\"u_reference_id\":21}"
+	req, _ := http.NewRequest(http.MethodPut, "/user?user_id=5", strings.NewReader(body))
+	router.ServeHTTP(w, req)
+	glog.Println("resp: ", w)
+	assert.NotEmpty(t, w)
+	assert.Equal(t, http.StatusOK, w.Code)
+	assert.NotEmpty(t, w.Body)
+
+	str := w.Body.String()
+	assert.NotContains(t, str, "error")
+	assert.NotContains(t, str, "record NOT Found")
+	assert.NotContains(t, str, "all mandatory values NOT Passed")
+
+	assert.Contains(t, str, "message")
+	assert.Contains(t, str, "UPDATE one record SUCCESS")
+	// assert.JSONEq(t,appInfo.String(), w.Body.String())
+}

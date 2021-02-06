@@ -44,9 +44,8 @@ func TestInsertUserBadRequest(t *testing.T) {
 	assert.NotContains(t, str, "SUCCESS")
 
 	assert.Contains(t, str, "error")
-	assert.Contains(t, str, "executing")
-	assert.Contains(t, str, "INSERT")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
+	assert.Contains(t, str, "does not exist")
+	assert.Contains(t, str, "SQLSTATE")
 }
 
 func TestInsertUser(t *testing.T) {

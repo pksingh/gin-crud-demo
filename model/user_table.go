@@ -169,7 +169,7 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 }
 
 func InsertSingleUser(c *gin.Context) error {
-	var uinfo UserInfo
+	var uinfo UserInfoBind
 	conn := db.Postgres
 
 	if err := c.ShouldBindJSON(&uinfo); err != nil {
@@ -185,7 +185,8 @@ func InsertSingleUser(c *gin.Context) error {
 
 	if err != nil {
 		log.Println("error while executing query: ", err.Error())
-		return errors.New("error while executing INSERT query")
+		// return errors.New("error while executing INSERT query")
+		return err
 	}
 
 	log.Printf("\n INSERT SUCCESS \n\n")

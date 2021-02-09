@@ -203,10 +203,10 @@ func UpdateSingleUser(c *gin.Context) error {
 		return errors.New("record NOT Found")
 	}
 
-	var uinfo UserInfo
+	var uinfo UserInfoBind
 	conn := db.Postgres
 
-	if err := c.BindJSON(&uinfo); err != nil {
+	if err := c.ShouldBindJSON(&uinfo); err != nil {
 		log.Printf("\n InPut Details: ERROR - bindjson() : %v\n\n", err.Error())
 		return err
 	}

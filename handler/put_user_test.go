@@ -159,11 +159,10 @@ func TestUpdateUserInvalidBody(t *testing.T) {
 
 	str := w.Body.String()
 	assert.NotContains(t, str, "all mandatory values NOT Passed")
-
+	assert.NotContains(t, str, "record NOT Found")
 	assert.NotContains(t, str, "message")
 	assert.NotContains(t, str, "SUCCESS")
 
 	assert.Contains(t, str, "error")
-	assert.Contains(t, str, "record NOT Found")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
+	assert.Contains(t, str, "validation")
 }

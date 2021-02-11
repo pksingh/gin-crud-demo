@@ -41,8 +41,6 @@ func TestGetUser(t *testing.T) {
 	assert.Contains(t, str, "u_account_id")
 	assert.Contains(t, str, "u_contact_id")
 	assert.Contains(t, str, "u_loyalty_id")
-
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestGetUserInvalidRequest(t *testing.T) {
@@ -65,8 +63,6 @@ func TestGetUserInvalidRequest(t *testing.T) {
 	str := w.Body.String()
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "all mandatory values NOT Passed")
-
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestGetUserNoRecordFound(t *testing.T) {
@@ -90,7 +86,6 @@ func TestGetUserNoRecordFound(t *testing.T) {
 	str := w.Body.String()
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "record NOT Found")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestGetUserBadRequest(t *testing.T) {
@@ -115,5 +110,4 @@ func TestGetUserBadRequest(t *testing.T) {
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "ERROR")
 	assert.Contains(t, str, "SQLSTATE")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }

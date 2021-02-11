@@ -29,7 +29,6 @@ func TestUpdateUserBadRequest(t *testing.T) {
 	router.PUT("/user", UpdateUser)
 	w := httptest.NewRecorder()
 	body := "{\"u_user_id\":5,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
-	// body := "{\"u_user_id\":1,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	req, _ := http.NewRequest(http.MethodPut, "/user?user_id=5", strings.NewReader(body))
 	router.ServeHTTP(w, req)
 	glog.Println("resp: ", w)
@@ -46,7 +45,6 @@ func TestUpdateUserBadRequest(t *testing.T) {
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "does not exist")
 	assert.Contains(t, str, "SQLSTATE")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestUpdateUser(t *testing.T) {
@@ -59,7 +57,6 @@ func TestUpdateUser(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	router.PUT("/user", UpdateUser)
 	w := httptest.NewRecorder()
-	// body := "{\"u_user_id\":5,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
 	body := "{\"u_user_id\":5,\"u_account_id\":500,\"u_contact_id\":52,\"u_loyalty_id\":53,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	req, _ := http.NewRequest(http.MethodPut, "/user?user_id=5", strings.NewReader(body))
 	router.ServeHTTP(w, req)
@@ -75,7 +72,6 @@ func TestUpdateUser(t *testing.T) {
 
 	assert.Contains(t, str, "message")
 	assert.Contains(t, str, "UPDATE one record SUCCESS")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestUpdateUserInvalidParam(t *testing.T) {
@@ -88,7 +84,6 @@ func TestUpdateUserInvalidParam(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	router.PUT("/user", UpdateUser)
 	w := httptest.NewRecorder()
-	// body := "{\"u_user_id\":1,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
 	body := "{\"u_user_id\":1,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	req, _ := http.NewRequest(http.MethodPut, "/user", strings.NewReader(body))
 	router.ServeHTTP(w, req)
@@ -104,7 +99,6 @@ func TestUpdateUserInvalidParam(t *testing.T) {
 
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "all mandatory values NOT Passed")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestUpdateUserInvalidID(t *testing.T) {
@@ -117,7 +111,6 @@ func TestUpdateUserInvalidID(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	router.PUT("/user", UpdateUser)
 	w := httptest.NewRecorder()
-	// body := "{\"u_user_id\":1,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
 	body := "{\"u_user_id\":12345,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	req, _ := http.NewRequest(http.MethodPut, "/user?user_id=12345", strings.NewReader(body))
 	router.ServeHTTP(w, req)
@@ -133,7 +126,6 @@ func TestUpdateUserInvalidID(t *testing.T) {
 
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "record NOT Found")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestUpdateUserInvalidBody(t *testing.T) {
@@ -146,10 +138,7 @@ func TestUpdateUserInvalidBody(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	router.PUT("/user", UpdateUser)
 	w := httptest.NewRecorder()
-	// body := "{\"u_user_id\":1,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21,\"u_user_type\":\"u\",\"u_account_type\":\"a\",\"u_loyalty_type\":\"l\",\"u_member_type\":\"m\",\"u_brand_type\":\"b\",\"u_create_rcd_at\":\"2022-09-13T15:11:48+05:30\",\"u_create_rcd_by_who\":\"w\",\"u_create_rcd_by_app\":\"a\",\"u_update_rcd_at\":\"2022-09-13T15:12:12+05:30\",\"u_update_rcd_by_who\":\"w\",\"u_update_rcd_by_app\":\"a\",\"u_data_source\":\"s\"}"
-	// body := "{\"u_user_id\":5,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	body := "{\"u_user_id\":5}"
-	//,\"u_account_id\":21,\"u_contact_id\":22,\"u_loyalty_id\":23,\"u_is_active_id\":true,\"u_reference_id\":21}"
 	req, _ := http.NewRequest(http.MethodPut, "/user?user_id=5", strings.NewReader(body))
 	router.ServeHTTP(w, req)
 	glog.Println("resp: ", w)

@@ -41,8 +41,6 @@ func TestListUsers(t *testing.T) {
 	assert.Contains(t, str, "u_account_id")
 	assert.Contains(t, str, "u_contact_id")
 	assert.Contains(t, str, "u_loyalty_id")
-
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestListUsersNoRecordFound(t *testing.T) {
@@ -66,7 +64,6 @@ func TestListUsersNoRecordFound(t *testing.T) {
 	str := w.Body.String()
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "record NOT Found")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }
 
 func TestListUsersBadRequest(t *testing.T) {
@@ -91,5 +88,4 @@ func TestListUsersBadRequest(t *testing.T) {
 	assert.Contains(t, str, "error")
 	assert.Contains(t, str, "ERROR")
 	assert.Contains(t, str, "SQLSTATE")
-	// assert.JSONEq(t,appInfo.String(), w.Body.String())
 }

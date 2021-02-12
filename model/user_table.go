@@ -3,7 +3,6 @@ package model
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log"
 	"time"
 
@@ -58,7 +57,6 @@ func GetAllUsers(c *gin.Context) ([]UserInfo, error) {
 	conn := db.Postgres
 
 	query := "SELECT * FROM user_info"
-	fmt.Println("Query: ", query)
 	rows, err := conn.Query(context.Background(), query)
 	if err != nil {
 		return nil, err
@@ -110,19 +108,12 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 	conn := db.Postgres
 
 	user_id := c.Query("user_id")
-	// account_id := c.Query("account_id")
-	// contact_id := c.Query("contact_id")
-	// loyalty_id := c.Query("loyalty_id")
-
-	// fmt.Printf("user_id: %s; account_id: %s; contact_id: %s; loyalty_id: %s \n", user_id, account_id, contact_id, loyalty_id)
-	fmt.Printf("user_id: %s\n", user_id)
 	if user_id == "" {
 		return nil, errors.New("all mandatory values NOT Passed")
 	}
 
 	rows, err := conn.Query(context.Background(), "SELECT * FROM user_info WHERE u_user_id=$1 LIMIT 1", user_id)
 	if err != nil {
-		// log.Fatal("error while executing query")
 		return nil, err
 	}
 
@@ -132,7 +123,6 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 		count++
 		values, err := rows.Values()
 		if err != nil {
-			// log.Fatal("error while iterating dataset")
 			return nil, err
 		}
 
@@ -157,7 +147,6 @@ func GetSingleUser(c *gin.Context) (*UserInfo, error) {
 			Update_rcd_by_app: values[16].(string),
 			Data_source:       values[17].(string),
 		}
-		log.Println("[User_id:", uinfo.User_id, "]")
 	}
 
 	// return uinfo, nil
@@ -177,8 +166,6 @@ func InsertSingleUser(c *gin.Context) error {
 		return err
 	}
 
-	log.Printf("\n InPut Details: %+v \n\n", uinfo)
-
 	_, err := conn.Exec(context.Background(),
 		"INSERT INTO user_info (\"u_user_id\", \"u_account_id\", \"u_contact_id\", \"u_loyalty_id\", \"u_is_active_id\", \"u_reference_id\", \"u_user_type\", \"u_account_type\", \"u_loyalty_type\", \"u_member_type\", \"u_brand_type\", \"u_create_rcd_at\", \"u_create_rcd_by_who\", \"u_create_rcd_by_app\", \"u_update_rcd_at\", \"u_update_rcd_by_who\", \"u_update_rcd_by_app\", \"u_data_source\") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)",
 		uinfo.User_id, uinfo.Account_id, uinfo.Contact_id, uinfo.Loyalty_id, uinfo.IsActive_id, uinfo.Reference_id, uinfo.User_type, uinfo.Account_type, uinfo.Loyalty_type, uinfo.Member_type, uinfo.Brand_type, uinfo.Create_rcd_at, uinfo.Create_rcd_by_who, uinfo.Create_rcd_by_app, uinfo.Update_rcd_at, uinfo.Update_rcd_by_who, uinfo.Update_rcd_by_app, uinfo.Data_source)
@@ -188,8 +175,6 @@ func InsertSingleUser(c *gin.Context) error {
 		// return errors.New("error while executing INSERT query")
 		return err
 	}
-
-	log.Printf("\n INSERT SUCCESS \n\n")
 
 	return nil
 }
@@ -211,15 +196,7 @@ func UpdateSingleUser(c *gin.Context) error {
 		return err
 	}
 
-	log.Printf("\n InPut Details: %+v \n\n", uinfo)
-
 	user_id := c.Query("user_id")
-	// account_id := c.Query("account_id")
-	// contact_id := c.Query("contact_id")
-	// loyalty_id := c.Query("loyalty_id")
-
-	// fmt.Printf("user_id: %s; account_id: %s; contact_id: %s; loyalty_id: %s \n", user_id, account_id, contact_id, loyalty_id)
-	fmt.Printf("user_id: %s\n", user_id)
 	if user_id == "" {
 		return errors.New("all mandatory values NOT Passed")
 	}
@@ -232,8 +209,6 @@ func UpdateSingleUser(c *gin.Context) error {
 		return errors.New("error while executing UPDATE query")
 	}
 
-	log.Printf("\n UPDATE SUCCESS \n\n")
-
 	return nil
 }
 
@@ -241,13 +216,6 @@ func DeleteSingleUser(c *gin.Context) error {
 	conn := db.Postgres
 
 	user_id := c.Query("user_id")
-	// account_id := c.Query("account_id")
-	// contact_id := c.Query("contact_id")
-	// loyalty_id := c.Query("loyalty_id")
-
-	// fmt.Printf("user_id: %s; account_id: %s; contact_id: %s; loyalty_id: %s \n", user_id, account_id, contact_id, loyalty_id)
-	fmt.Printf("user_id: %s\n", user_id)
-
 	if user_id == "" {
 		return errors.New("all mandatory values NOT Passed")
 	}

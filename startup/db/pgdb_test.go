@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/pksingh/gin-curd-demo/log"
 	"github.com/pksingh/gin-curd-demo/startup/appProps"
+	"github.com/stretchr/testify/assert"
 )
 
 // Mock the config struct viper
@@ -29,25 +30,23 @@ func (viper *MockViper) GetBool(key string) bool {
 func TestDB(t *testing.T) {
 	ctx := context.TODO()
 	t.Setenv("runEnv", "dev")
-	_ = appProps.Load("../../../resources")
+	_ = appProps.Load("../../resources")
 	_ = log.Load(ctx)
 	gin.SetMode(gin.TestMode)
-	loadLog(t)
-	InitDB(ctx)
+	err := InitDB(ctx)
+	assert.NoError(t, err)
 }
 
 func TestDBError(t *testing.T) {
 	ctx := context.TODO()
-	t.Setenv("runEnv", "test")
-	_ = appProps.Load("../../../resources")
+	t.Setenv("runEnv", "dev")
+	t.Setenv("DATABASE_NAME", "xyz")
+	_ = appProps.Load("../../resources")
 	_ = log.Load(ctx)
 	gin.SetMode(gin.TestMode)
-	InitDB(ctx)
-}
-
-func loadLog(t *testing.T) {
-	ctx := context.TODO()
-	t.Setenv("runEnv", "dev")
-	_ = appProps.Load("../../../resources")
-	_ = log.Load(ctx)
+	err := InitDB(ctx)
+	if assert.Error(t, err) {
+		assert.ErrorContains(t, err, "failed to connect")
+		assert.ErrorContains(t, err, "server error")
+	}
 }

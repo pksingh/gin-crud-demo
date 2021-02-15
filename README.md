@@ -34,37 +34,37 @@ RESPONSE:
 
 ---
 
-C:\Users\Home\Desktop\gin-crud-demo>go build .
+C:\Users\Home\Desktop\gin-crud-demo>**go build .**
 
-C:\Users\Home\Desktop\gin-crud-demo>set runEnv=dev
+C:\Users\Home\Desktop\gin-crud-demo>set **runEnv=dev**
 
 C:\Users\Home\Desktop\gin-crud-demo>gin-crud-demo.exe
-[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
-
-[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
- - using code:  gin.SetMode(gin.ReleaseMode)
-
-[GIN-debug] GET    /info                     --> github.com/pksingh/gin-crud-demo/handler.GetInfo (3 handlers)
-[GIN-debug] GET    /health                   --> github.com/pksingh/gin-crud-demo/handler.GetHealth (3 handlers)        
-[GIN-debug] GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
-[GIN-debug] GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
-[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
-[GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2020/11/01 - 18:31:16 | 404 |            0s |             ::1 | GET      "/"
-[GIN] 2020/11/01 - 18:31:21 | 404 |            0s |             ::1 | GET      "/"
-[GIN] 2020/11/01 - 18:31:28 | 200 |       154.8µs |             ::1 | GET      "/info"
-[GIN] 2020/11/01 - 18:32:56 | 404 |            0s |             ::1 | GET      "/"
-[GIN] 2020/11/01 - 18:33:41 | 200 |       604.7µs |             ::1 | GET      "/health"
+>[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+>
+>[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+> - using code:  gin.SetMode(gin.ReleaseMode)
+>
+>[GIN-debug] GET    /info                     --> github.com/pksingh/gin-crud-demo/handler.GetInfo (3 handlers)
+>[GIN-debug] GET    /health                   --> github.com/pksingh/gin-crud-demo/handler.GetHealth (3 handlers)        
+>[GIN-debug] GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
+>[GIN-debug] GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (3 handlers)
+>[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+>[GIN-debug] Listening and serving HTTP on :8080
+>[GIN] 2020/11/01 - 18:31:16 | 404 |            0s |             ::1 | GET      "/"
+>[GIN] 2020/11/01 - 18:31:21 | 404 |            0s |             ::1 | GET      "/"
+>[GIN] 2020/11/01 - 18:31:28 | 200 |       154.8µs |             ::1 | GET      "/info"
+>[GIN] 2020/11/01 - 18:32:56 | 404 |            0s |             ::1 | GET      "/"
+>[GIN] 2020/11/01 - 18:33:41 | 200 |       604.7µs |             ::1 | GET      "/health"
 ---
 ## Test case Added
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-crud-demo
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-crud-demo***
 
 === RUN   TestStartUpErr
 2020-11-03T20:55:47.307+0530    PANIC   gin-crud-demo/main.go:43      failed to start application     {"appCrashed": "i want a startup err"}
@@ -75,15 +75,14 @@ github.com/pksingh/gin-crud-demo.TestStartUpErr
 testing.tRunner
         C:/DEV/Go/src/testing/testing.go:1446
 --- PASS: TestStartUpErr (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo        (cached)
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo        (cached)
+>
 > Test run finished at 11/4/2020, 9:13:29 PM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestMiddlewaresInjections$ github.com/pksingh/gin-crud-demo/config/logperreq
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestMiddlewaresInjections$ github.com/pksingh/gin-crud-demo/config/logperreq***
 
 === RUN   TestMiddlewaresInjections
 [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
@@ -91,61 +90,55 @@ Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestMiddlewaresInject
  - using code:  gin.SetMode(gin.ReleaseMode)
 
 --- PASS: TestMiddlewaresInjections (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.909s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.909s
+>
 > Test run finished at 11/3/2020, 9:06:45 PM <
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestNewReqId$ github.com/pksingh/gin-crud-demo/config/logperreq
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestNewReqId$ github.com/pksingh/gin-crud-demo/config/logperreq***
 
 === RUN   TestNewReqId
 --- PASS: TestNewReqId (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.909s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.909s
+>
 > Test run finished at 11/3/2020, 9:07:05 PM <
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetRequestIdNoCtx$ github.com/pksingh/gin-crud-demo/config/logperreq
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetRequestIdNoCtx$ github.com/pksingh/gin-crud-demo/config/logperreq***
 
 === RUN   TestGetRequestIdNoCtx
 --- PASS: TestGetRequestIdNoCtx (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.872s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.872s
+>
 > Test run finished at 11/3/2020, 9:07:34 PM <
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBadLogConf$ github.com/pksingh/gin-crud-demo/config/jlog
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBadLogConf$ github.com/pksingh/gin-crud-demo/config/jlog***
 
 === RUN   TestBadLogConf
 {"level":"error","ts":1604417897.1259308,"caller":"jlog/logConfig.go:49","msg":"failed to initialize zap logger with given configuration.defaulting to zap-prod configuration.","error":"missing EncodeTime in EncoderConfig","stacktrace":"github.com/pksingh/gin-crud-demo/config/jlog.ZapAppConf.CustomizeLogger\n\tc:/Users/Home/Desktop/gin-crud-demo/config/jlog/logConfig.go:49\ngithub.com/pksingh/gin-crud-demo/config/jlog.TestBadLogConf\n\tc:/Users/Home/Desktop/gin-crud-demo/config/jlog/logConfig_test.go:12\ntesting.tRunner\n\tC:/DEV/Go/src/testing/testing.go:1446"}
 --- PASS: TestBadLogConf (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/jlog    0.920s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/jlog    0.920s
+>
 > Test run finished at 11/3/2020, 9:08:17 PM <
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestFetchLogLevels$ github.com/pksingh/gin-crud-demo/config/jlog
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestFetchLogLevels$ github.com/pksingh/gin-crud-demo/config/jlog***
 
 === RUN   TestFetchLogLevels
 --- PASS: TestFetchLogLevels (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/jlog    0.749s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/jlog    0.749s
+>
 > Test run finished at 11/3/2020, 9:09:09 PM <
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBaseZapConf$ github.com/pksingh/gin-crud-demo/config/jlog
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBaseZapConf$ github.com/pksingh/gin-crud-demo/config/jlog***
 
 === RUN   TestBaseZapConf
 --- PASS: TestBaseZapConf (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/config/jlog    0.742s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/config/jlog    0.742s
+>
 > Test run finished at 11/3/2020, 9:09:16 PM <
 
 ---
@@ -154,7 +147,7 @@ http.timeout.sample=1500
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestGetInfo|TestGetHealth)$ github.com/pksingh/gin-crud-demo/handler
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestGetInfo|TestGetHealth)$ github.com/pksingh/gin-crud-demo/handler***
 
 === RUN   TestGetHealth
 [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
@@ -164,15 +157,14 @@ Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestGetInfo|TestGetH
 --- PASS: TestGetHealth (0.00s)
 === RUN   TestGetInfo
 --- PASS: TestGetInfo (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/handler        0.219s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/handler        0.219s
+>
 > Test run finished at 11/10/2020, 10:53:10 PM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestBasicAuthConfNotLoaded|TestBasicAuthApply)$ github.com/pksingh/gin-crud-demo/startup/middlewares/basicAuth
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestBasicAuthConfNotLoaded|TestBasicAuthApply)$ github.com/pksingh/gin-crud-demo/startup/middlewares/basicAuth***
 
 === RUN   TestBasicAuthConfNotLoaded
 === RUN   TestBasicAuthConfNotLoaded/basic_auth_not_loaded
@@ -205,14 +197,13 @@ warn    logger not found in context. defaulting to zap-prod configuration.
     --- FAIL: TestBasicAuthApply/basic_auth_env_no_username_or_password (0.00s)
     --- PASS: TestBasicAuthApply/happy_path (0.00s)
 FAIL
-FAIL    github.com/pksingh/gin-crud-demo/startup/middlewares/basicAuth  0.267s
-
-
+>FAIL    github.com/pksingh/gin-crud-demo/startup/middlewares/basicAuth  0.267s
+>
 > Test run finished at 11/28/2020, 11:35:34 PM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetAll$ github.com/pksingh/gin-crud-demo/startup/appProps
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetAll$ github.com/pksingh/gin-crud-demo/startup/appProps***
 
 === RUN   TestGetAll
 === RUN   TestGetAll/GetAllWithoutLoad
@@ -222,15 +213,14 @@ configuration loading err - open ./resources/app.properties: The system cannot f
 --- PASS: TestGetAll (0.00s)
     --- PASS: TestGetAll/GetAllWithoutLoad (0.00s)
     --- PASS: TestGetAll/GetAllSuccess (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/startup/appProps       0.343s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/startup/appProps       0.343s
+>
 > Test run finished at 11/28/2020, 11:38:14 PM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestCreateServer|TestCreateServerInit|Test_randSeq|Test_generateRandomBytes)$ github.com/pksingh/gin-crud-demo/startup/server
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestCreateServer|TestCreateServerInit|Test_randSeq|Test_generateRandomBytes)$ github.com/pksingh/gin-crud-demo/startup/server***
 
 === RUN   TestCreateServerInit
 --- PASS: TestCreateServerInit (0.00s)
@@ -240,15 +230,14 @@ Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestCreateServer|Tes
 --- PASS: Test_generateRandomBytes (0.00s)
 === RUN   TestCreateServer
 --- PASS: TestCreateServer (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/startup/server 0.346s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/startup/server 0.346s
+>
 > Test run finished at 11/30/2020, 11:47:44 PM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestDB|TestDBError)$ github.com/pksingh/gin-crud-demo/startup/db
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestDB|TestDBError)$ github.com/pksingh/gin-crud-demo/startup/db***
 
 === RUN   TestDB
 configuration loading err - open ../../../resources/app.properties: The system cannot find the path specified..
@@ -264,15 +253,14 @@ info    connection string:      {"host": "", "port": "0", "user": "", "dbname": 
 cleartextPwd PWD=
 error   sql.Open failed, error:         {"error": "failed to connect to `host=port=0 user=password= database=sslmode=`: hostname resolving error (lookup port=0: no such host)"}
 --- PASS: TestDBError (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/startup/db     0.306s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/startup/db     0.306s
+>
 > Test run finished at 12/6/2020, 12:15:42 AM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestVerifyLogConfHappy|TestBadLogConf|TestGetLoggerWithNilCtxt|TestGetLoggerWithCustomTypeCtxt|TestGetLoggerWithStringCtxt|TestGetLoggerWithNotFoundInCtxt|TestGetRequestIdNotFoundInCtxt)$ github.com/pksingh/gin-crud-demo/log
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestVerifyLogConfHappy|TestBadLogConf|TestGetLoggerWithNilCtxt|TestGetLoggerWithCustomTypeCtxt|TestGetLoggerWithStringCtxt|TestGetLoggerWithNotFoundInCtxt|TestGetRequestIdNotFoundInCtxt)$ github.com/pksingh/gin-crud-demo/log***
 
 === RUN   TestVerifyLogConfHappy
 --- PASS: TestVerifyLogConfHappy (0.00s)
@@ -291,15 +279,14 @@ warn    logger not found in context. defaulting to zap-prod configuration.
 --- PASS: TestGetLoggerWithNotFoundInCtxt (0.00s)
 === RUN   TestGetRequestIdNotFoundInCtxt
 --- PASS: TestGetRequestIdNotFoundInCtxt (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo/log    0.229s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo/log    0.229s
+>
 > Test run finished at 12/6/2020, 12:16:48 AM <
 
 ---
 
-Running tool: C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-crud-demo
+Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestStartUpErr$ github.com/pksingh/gin-crud-demo***
 
 warn    logger not found in context. defaulting to zap-prod configuration.
 info    connection string:      {"host": "", "port": "0", "user": "", "dbname": "", "sslmode": ""}
@@ -315,10 +302,9 @@ github.com/pksingh/gin-crud-demo.TestStartUpErr
 testing.tRunner
         C:/DEV/Go/src/testing/testing.go:1446
 --- PASS: TestStartUpErr (0.00s)
-PASS
-ok      github.com/pksingh/gin-crud-demo        0.352s
-
-
+>PASS
+>ok      github.com/pksingh/gin-crud-demo        0.352s
+>
 > Test run finished at 12/8/2020, 12:23:33 AM <
 
 ---

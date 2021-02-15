@@ -8,25 +8,25 @@ Sample Demo based on GIN framework.
 
 ---
 
-REQUEST:
+**REQUEST:**
 http://localhost:8080
 
-RESPONSE:
+**RESPONSE:**
 404 page not found
 
-REQUEST:
+**REQUEST:**
 http://localhost:8080/
 
-RESPONSE:
+**RESPONSE:**
 404 page not found
 
-REQUEST:
+**REQUEST:**
 http://localhost:8080/info
 
-RESPONSE:
+**RESPONSE:**
 {"appName":"gin-crud-demo","lastCommitId":"","kubePodId":"LAP-PSINGH","UpSince":"Sun, 01 Nov 2020 18:30:41 IST"}
 
-REQUEST:
+**REQUEST:**
 http://localhost:8080/health
 
 RESPONSE:
@@ -102,7 +102,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestMiddlewaresInj
 Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestNewReqId$ github.com/pksingh/gin-crud-demo/config/logperreq***
 ```
 === RUN   TestNewReqId
---- PASS: TestNewReqId (0.00s)```
+--- PASS: TestNewReqId (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.909s
 >
@@ -111,7 +112,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestNewReqId$ gith
 Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestGetRequestIdNoCtx$ github.com/pksingh/gin-crud-demo/config/logperreq***
 ```
 === RUN   TestGetRequestIdNoCtx
---- PASS: TestGetRequestIdNoCtx (0.00s)```
+--- PASS: TestGetRequestIdNoCtx (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/config/logperreq       0.872s
 >
@@ -121,7 +123,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBadLogConf$ gi
 ```
 === RUN   TestBadLogConf
 {"level":"error","ts":1604417897.1259308,"caller":"jlog/logConfig.go:49","msg":"failed to initialize zap logger with given configuration.defaulting to zap-prod configuration.","error":"missing EncodeTime in EncoderConfig","stacktrace":"github.com/pksingh/gin-crud-demo/config/jlog.ZapAppConf.CustomizeLogger\n\tc:/Users/Home/Desktop/gin-crud-demo/config/jlog/logConfig.go:49\ngithub.com/pksingh/gin-crud-demo/config/jlog.TestBadLogConf\n\tc:/Users/Home/Desktop/gin-crud-demo/config/jlog/logConfig_test.go:12\ntesting.tRunner\n\tC:/DEV/Go/src/testing/testing.go:1446"}
---- PASS: TestBadLogConf (0.00s)```
+--- PASS: TestBadLogConf (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/config/jlog    0.920s
 >
@@ -130,7 +133,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBadLogConf$ gi
 Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestFetchLogLevels$ github.com/pksingh/gin-crud-demo/config/jlog***
 ```
 === RUN   TestFetchLogLevels
---- PASS: TestFetchLogLevels (0.00s)```
+--- PASS: TestFetchLogLevels (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/config/jlog    0.749s
 >
@@ -139,7 +143,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestFetchLogLevels
 Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^TestBaseZapConf$ github.com/pksingh/gin-crud-demo/config/jlog***
 ```
 === RUN   TestBaseZapConf
---- PASS: TestBaseZapConf (0.00s)```
+--- PASS: TestBaseZapConf (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/config/jlog    0.742s
 >
@@ -160,7 +165,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestGetInfo|TestG
 
 --- PASS: TestGetHealth (0.00s)
 === RUN   TestGetInfo
---- PASS: TestGetInfo (0.00s)```
+--- PASS: TestGetInfo (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/handler        0.219s
 >
@@ -200,7 +206,8 @@ warn    logger not found in context. defaulting to zap-prod configuration.
     --- FAIL: TestBasicAuthApply/basic_auth_env_var_invalid (0.00s)
     --- FAIL: TestBasicAuthApply/basic_auth_env_no_username_or_password (0.00s)
     --- PASS: TestBasicAuthApply/happy_path (0.00s)
-FAIL```
+FAIL
+```
 >FAIL    github.com/pksingh/gin-crud-demo/startup/middlewares/basicAuth  0.267s
 >
 > Test run finished at 11/28/2020, 11:35:34 PM <
@@ -216,7 +223,8 @@ configuration loading err - open ./resources/app.properties: The system cannot f
  Empty Properties returned
 --- PASS: TestGetAll (0.00s)
     --- PASS: TestGetAll/GetAllWithoutLoad (0.00s)
-    --- PASS: TestGetAll/GetAllSuccess (0.00s)```
+    --- PASS: TestGetAll/GetAllSuccess (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/startup/appProps       0.343s
 >
@@ -233,7 +241,8 @@ Running tool: ***C:\DEV\Go\bin\go.exe test -timeout 30s -run ^(TestCreateServer|
 === RUN   Test_generateRandomBytes
 --- PASS: Test_generateRandomBytes (0.00s)
 === RUN   TestCreateServer
---- PASS: TestCreateServer (0.00s)```
+--- PASS: TestCreateServer (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/startup/server 0.346s
 >
@@ -256,7 +265,8 @@ warn    logger not found in context. defaulting to zap-prod configuration.
 info    connection string:      {"host": "", "port": "0", "user": "", "dbname": "", "sslmode": ""}
 cleartextPwd PWD=
 error   sql.Open failed, error:         {"error": "failed to connect to `host=port=0 user=password= database=sslmode=`: hostname resolving error (lookup port=0: no such host)"}
---- PASS: TestDBError (0.00s)```
+--- PASS: TestDBError (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/startup/db     0.306s
 >
@@ -282,7 +292,8 @@ error   input context is nil. defaulting to zap-prod configuration.
 warn    logger not found in context. defaulting to zap-prod configuration.
 --- PASS: TestGetLoggerWithNotFoundInCtxt (0.00s)
 === RUN   TestGetRequestIdNotFoundInCtxt
---- PASS: TestGetRequestIdNotFoundInCtxt (0.00s)```
+--- PASS: TestGetRequestIdNotFoundInCtxt (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo/log    0.229s
 >
@@ -305,7 +316,8 @@ github.com/pksingh/gin-crud-demo.TestStartUpErr
         c:/Users/Home/Desktop/gin-crud-demo/main_test.go:51
 testing.tRunner
         C:/DEV/Go/src/testing/testing.go:1446
---- PASS: TestStartUpErr (0.00s)```
+--- PASS: TestStartUpErr (0.00s)
+```
 >PASS
 >ok      github.com/pksingh/gin-crud-demo        0.352s
 >
